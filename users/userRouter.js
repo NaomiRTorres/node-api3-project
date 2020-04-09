@@ -21,16 +21,16 @@ router.post('/', (req, res) => {
 
 router.post('/:id/posts', (req, res) => {
   //do your magic!
-  // Posts.insertPost(req.body)
-  // .then(post => {
-  //   res.status(201).json(post);
-  // })
-  // .catch(error => {
-  //   console.log(error);
-  //   res.status(500).json({
-  //     message: 'Error adding the post'
-  //   });
-  // });
+  Posts.insert({...req.body, user_id: req.params.id})
+  .then(post => {
+    res.status(201).json(post);
+  })
+  .catch(error => {
+    console.log(error);
+    res.status(500).json({
+      message: 'Error adding the post'
+    });
+  });
 });
 
 router.get('/', validateUser, (req, res) => {

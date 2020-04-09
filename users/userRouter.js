@@ -37,8 +37,8 @@ router.get('/', validateUser, (req, res) => {
   // do your magic!
   Users.get(req.query)
   .then(users => {
-    const message = process.env.MESSAGE || "hello from my computer";
-    res.status(200).json(users, message);
+    
+    res.status(200).json(users);
   })
   .catch(error => {
     console.log(error);
